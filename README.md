@@ -1,2 +1,3 @@
 Hi, this is Sema
-Checking commit again
+Удалил старую и
+Добавил еще строку
