@@ -1,0 +1,6 @@
+1.First name: input#input_name_f                          #css-селектор, поиск по ID
+2.Last name: //input[@name='last name form']              #xpath-селектор, поиск по name
+3.Email: input.third_information                          #css-селектор, поиск по class
+4.Phone: //input[@data-attr="ph_number_entry_field"]      #xpath-селектор, поиск по вашему собственному атрибуту
+5.Address: //input[@class="form-control second"]          #xpath-селектор, поиск по class
+
