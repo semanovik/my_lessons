@@ -23,8 +23,6 @@ try:
     button.click()
 
     # Проверяем, что смогли зарегистрироваться
-    # ждем загрузки страницы
-
 
     # находим элемент, содержащий текст
     welcome_text_elt = browser.find_element_by_tag_name("h1")
@@ -35,7 +33,5 @@ try:
     assert "Congratulations! You have successfully registered!" == welcome_text
 
 finally:
-    # ожидание чтобы визуально оценить результаты прохождения скрипта
-
     # закрываем браузер после всех манипуляций
     browser.quit()
