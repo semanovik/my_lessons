@@ -11,9 +11,9 @@ try:
 
     name_field = browser.find_element_by_xpath("//div[@class='first_block']//input[@class='form-control first']")
     name_field.send_keys("Sema")
-    last_name_field = browser.find_element_by_xpath('//input[@placeholder="Input your last name"]')
+    last_name_field = browser.find_element_by_xpath("//div[@class='first_block']//input[@class='form-control second']")
     last_name_field.send_keys("Novik")
-    email_field = browser.find_element_by_xpath('//input[@placeholder="Input your email"]')
+    email_field = browser.find_element_by_xpath("//div[@class='first_block']//input[@class='form-control third']")
     email_field.send_keys("Sema@sema.com")
 
 
