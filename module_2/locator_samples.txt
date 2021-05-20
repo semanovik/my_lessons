@@ -3,4 +3,3 @@ input#input_name_f
 input.third_information
 //input[@data-attr="ph_number_entry_field"]
 //input[@class="fifth_information"]
-
