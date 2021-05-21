@@ -1,5 +1,5 @@
 input#input_name_f
 //input[@name='last name form']
-input.third_information
+input.form-control.third
 //input[@data-attr="ph_number_entry_field"]
-//input[@class="fifth_information"]
+//input[@class="form-control fifth"]
