@@ -2,6 +2,7 @@ from selenium import webdriver
 
 login_page_link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
 
+
 def test_login_logout():
     # Data
     login = 'semasema@gmail.com'
@@ -35,10 +36,11 @@ def test_login_logout():
         browser.find_element_by_css_selector(logout_button_locator).click()
         browser.find_element_by_css_selector(back_to_login_page_button_locator).click()
 
-        #Assert
+        # Assert
         assert login_page_link in browser.current_url, 'Wrong current URL'
 
     finally:
         browser.quit()
+
 
 test_login_logout()
