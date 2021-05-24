@@ -4,6 +4,8 @@ login_page_link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
 
 def test_login_logout():
     # Data
+    login = 'semasema@gmail.com'
+    password = '328225328225'
     login_email_locator = '[id="id_login-username"]'
     login_password_locator = '[name="login-password"]'
     login_button_locator = '[name="login_submit"]'
@@ -26,8 +28,8 @@ def test_login_logout():
         login_button = browser.find_element_by_css_selector(login_button_locator)
 
         # Act
-        input_login.send_keys('semasema@gmail.com')
-        input_password.send_keys('328225328225')
+        input_login.send_keys(login)
+        input_password.send_keys(password)
         login_button.click()
         browser.find_element_by_css_selector(welcome_message)
         browser.find_element_by_css_selector(logout_button_locator).click()
