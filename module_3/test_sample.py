@@ -1,5 +1,3 @@
-import time
-
 from selenium import webdriver
 
 login_page_link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
@@ -9,6 +7,7 @@ def test_login_logout():
     # Data
     login = 'semasema@gmail.com'
     password = '328225328225'
+
     login_email_locator = '[id="id_login-username"]'
     login_password_locator = '[id="id_login-password"]'
     login_button_locator = '[name="login_submit"]'
@@ -42,7 +41,6 @@ def test_login_logout():
         assert login_page_link in browser.current_url, 'Wrong login page URL'
 
     finally:
-        time.sleep(2)
         browser.quit()
 
 
