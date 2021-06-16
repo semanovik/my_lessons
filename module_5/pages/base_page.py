@@ -23,7 +23,7 @@ class BasePage():
             return False
         return True
 
-    def solve_quiz_and_get_code(self):
+    def solve_quiz_and_get_code(self):  # Это нужно только для выполнения математического уравнения
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
         answer = str(math.log(abs((12 * math.sin(float(x))))))
