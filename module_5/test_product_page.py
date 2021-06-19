@@ -3,6 +3,7 @@ import pytest
 from .pages.basket_page import BasketPage
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
+import random
 
 common_link = 'http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/'
 
@@ -134,6 +135,7 @@ class TestUserAddToBasketFromProductPage:
         login_page = LoginPage(browser, browser.current_url)
         login_page.register_new_user()
         login_page.should_be_authorized_user()
+        
 
     # На активном пользователе
     # Проверяем, что нет сообщения об успешном добавлении на странице с товаром
