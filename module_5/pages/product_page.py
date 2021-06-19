@@ -60,4 +60,12 @@ class ProductPage(BasePage):
         cart_amount_after = self.browser.find_element(*ProductPageLocators.CART_AMOUNT)
         return cart_amount_after.text
 
+    # Отсутствие сообщения об успешном добавлении
+    def should_not_be_success_message_after_adding_product_to_basket(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDED_BOOK_TITLE), \
+            "Success message is presented, but should not be"
 
+    # Пропадает сообщение об успешном добавлении
+    def should_not_be_message_disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.ADDED_BOOK_TITLE), \
+            "Success message is not disappeared"
