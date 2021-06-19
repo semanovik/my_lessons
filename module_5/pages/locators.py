@@ -1,8 +1,11 @@
 from selenium.webdriver.common.by import By
 
+
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    CART_LINK = (By.XPATH, '//*[@id="default"]/header/div[1]/div/div[2]/span/a')
+
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, '#login_link')
@@ -14,7 +17,6 @@ class LoginPageLocators():
 
 
 class ProductPageLocators():
-
     # Кнопка добавления книги в корзину
     ADD_TO_CART_BUTTON = (By.CSS_SELECTOR, '[class="btn btn-lg btn-primary btn-add-to-basket"]')
 
@@ -29,3 +31,8 @@ class ProductPageLocators():
 
     # Название книги в сообщении о добавлении в корзину
     ADDED_BOOK_TITLE = (By.XPATH, '//*[@id="messages"]/div[1]/div/strong')
+
+
+class BasketPageLocators():
+    EMPTY_BASKET_MESSAGE = (By.XPATH, '//*[@id="content_inner"]/p')
+    BASKET_ITEMS = (By.CSS_SELECTOR, '[class="basket-items"]')

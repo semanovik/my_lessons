@@ -1,6 +1,7 @@
 import time
 import pytest
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 
 common_link = 'http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/'
 
@@ -102,3 +103,22 @@ class TestProductPage:
 
         # Assert
         page.go_to_login_page()
+
+    # Пререходим в корзину с главной страницы
+    # Проверяем, что она пуста
+    # Проверяем наличие сообщения, что корзина пуста
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
+        # Arrange
+        page = ProductPage(browser, common_link)
+
+        # Act
+        page.open()
+        page.go_to_basket()
+        basket_page = BasketPage(browser, browser.current_url)
+
+        # Assert
+        basket_page.should_be_no_books_in_basket()
+        basket_page.should_be_empty_basket_message()
+
+
+
