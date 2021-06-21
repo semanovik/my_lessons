@@ -57,3 +57,13 @@ class LoginPage(MainPage):
         self.should_be_login_input()
         self.should_be_password_input()
 
+    def should_be_reg_email_input(self):
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL_INPUT), 'Reg email input is not presented'
+
+    def should_be_reg_form(self):
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_FORM), 'Reg form is not presented'
+
+    def should_be_reg_pass_input(self):
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD_INPUT), 'No pass1 inp'
+        assert self.is_element_present(*LoginPageLocators.REGISTRATION_PASSWORD_SUBMIT_INPUT), 'No pass2 inp'
+
