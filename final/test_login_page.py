@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
 login_page_link = 'http://selenium1py.pythonanywhere.com/accounts/login/'
+
 expected_welcome_text = {
     'ru': 'Рады видеть вас снова',
     'en': 'Welcome back',
