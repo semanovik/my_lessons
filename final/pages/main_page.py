@@ -28,6 +28,12 @@ class MainPage():
         link = self.browser.find_element(*MainPageLocators.LOGOUT_LINK)
         link.click()
 
+    # Переходим в каталог с главной страницы
+    def go_to_catalogue_page(self):
+        link = self.browser.find_element(*MainPageLocators.ALL_GOODS_CATALOGUE)
+        link.click()
+
+    # Появление приветствия
     def should_be_welcome_message(self):
         assert self.is_element_present(*MainPageLocators.WELCOME_MESSAGE), 'Welcome message is not presented'
 
