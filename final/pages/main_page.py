@@ -1,13 +1,13 @@
 from selenium.common.exceptions import NoSuchElementException
 from .locators import MainPageLocators
 
+
 class MainPage():
 
     def __init__(self, browser, url):
         self.browser = browser
         self.url = url
 
-    # Метод, реализующий открывание страницы
     def open(self):
         self.browser.get(self.url)
 
@@ -25,7 +25,7 @@ class MainPage():
 
     # Переход на страницу логирования с любой страницы сайта
     def go_to_login_page(self):
-        link = self.browser.find_element(*MainPageLocators.LOGOUT_LINK)
+        link = self.browser.find_element(*MainPageLocators.LOGIN_LINK)
         link.click()
 
     # Переходим в каталог с главной страницы
@@ -37,6 +37,13 @@ class MainPage():
     def should_be_welcome_message(self):
         assert self.is_element_present(*MainPageLocators.WELCOME_MESSAGE), 'Welcome message is not presented'
 
+    # Проверка текста приветствия
     def get_text_from_welcome_message(self):
         message = self.browser.find_element(*MainPageLocators.WELCOME_MESSAGE)
         return message.text
+
+    # Проверка соответствия url главной страницы
+    def should_be_main_page_url(self, language):
+        current_url = self.browser.current_url
+        real_url = f'http://selenium1py.pythonanywhere.com/{language}/'
+        assert current_url == real_url, f"Wrong main page url {current_url} == {real_url}"
