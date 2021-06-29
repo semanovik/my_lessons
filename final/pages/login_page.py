@@ -60,7 +60,7 @@ class LoginPage(MainPage):
         self.should_be_login_form()
         self.should_be_forgot_pass_link()
         self.should_be_submit_button()
-        self.should_be_login_input()
+        self.should_be_login_form()
         self.should_be_password_input()
 
     # Наличие поля ввода email для регистрации

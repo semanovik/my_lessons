@@ -5,17 +5,25 @@ from pages.main_page import MainPage
 
 login_page_link = 'http://selenium1py.pythonanywhere.com/accounts/login/'
 
-expected_welcome_text = {
+# Ожидаемый текст приветствия пользователя, который зашел вновь
+expected_welcome_text_login = {
     'ru': 'Рады видеть вас снова',
-    'en': 'Welcome back',
+    'en-GB': 'Welcome back',
     'es': 'Bienvenido de nuevo',
     'fr': 'Bienvenue'
+}
+
+# Ожидаемый текст приветствия нового пользователя
+expected_welcome_text_reg = {
+    'ru': 'Спасибо за регистрацию!',
+    'en-GB': 'Thanks for registering!',
+    'es': 'Gracias por registrarse!',
+    'fr': 'Merci de vous être enregistré !'
 }
 
 
 class TestLoginPage:
 
-    @pytest.mark.skip
     # Наличие необходимых элементов для логирования
     def test_need_to_login(self, browser):
         # Arrange
@@ -27,7 +35,6 @@ class TestLoginPage:
         # Assert
         page.should_be_to_login_in()
 
-    @pytest.mark.skip
     #   Наличие необходимых элементов для регистрации
     def test_need_to_register(self, browser):
         # Arrange
@@ -54,13 +61,16 @@ class TestLoginPage:
 
         # Assert
         main_page.should_be_welcome_message()
-        main_page.should_be_main_page_url(language)
         welcome_message = main_page.get_text_from_welcome_message()
-        assert welcome_message in expected_welcome_text[language], 'Wrong welcome text'
+        main_page.should_be_correct_message(expected_welcome_text_login[language], welcome_message)
 
     # Регистрация нового аккаунта
-    def test_reg_test_user(self, browser):
+    def test_reg_test_user(self, browser, language):
         page = LoginPage(browser, login_page_link)
 
         page.open()
         page.reg_new_user()
+        main_page = MainPage(browser, browser.current_url)
+
+        welcome_message = main_page.get_text_from_welcome_message()
+        main_page.should_be_correct_message(expected_welcome_text_reg[language], welcome_message)
