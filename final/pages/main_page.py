@@ -1,3 +1,6 @@
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 from .locators import MainPageLocators
 
@@ -19,6 +22,14 @@ class MainPage():
         except (NoSuchElementException):
             return False
         return True
+
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+
+        return False
 
     # Переход на страницу логирования с главной
     def go_to_login_page(self):
@@ -49,3 +60,7 @@ class MainPage():
     # Проверка ожидаемого текста полученному
     def should_be_correct_message(self, expected_message, message):
         assert message in expected_message, 'Wrong welcome message'
+
+    # Негативная проверка, что нет приветствия старого пользователя как нового
+    def should_not_be_incorrect_message(self, expected_message, message):
+        assert message not in expected_message, 'Wrong welcome message'

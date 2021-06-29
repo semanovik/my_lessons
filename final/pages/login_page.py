@@ -15,6 +15,16 @@ class LoginPage(MainPage):
         password_input.send_keys('328225328225')
         submit_button.click()
 
+    # Авторизация с невалидным паролем
+    def incorrect_fill_inputs(self):
+        email_input = self.browser.find_element(*LoginPageLocators.EMAIL_INPUT)
+        password_input = self.browser.find_element(*LoginPageLocators.PASSWORD_INPUT)
+        submit_button = self.browser.find_element(*LoginPageLocators.SUBMIT_BUTTON)
+
+        email_input.send_keys('semasema@gmail.com')
+        password_input.send_keys('3282253282251234')
+        submit_button.click()
+
     # Регистрация с допустимыми данными
     def reg_new_user(self):
         reg_email_input = self.browser.find_element(*LoginPageLocators.REGISTRATION_EMAIL_INPUT)
@@ -63,6 +73,13 @@ class LoginPage(MainPage):
         self.should_be_login_form()
         self.should_be_password_input()
 
+    # Наличие всех элеменов, необходимых для регистрации
+    def should_be_for_registration(self):
+        self.should_be_register_form()
+        self.should_be_reg_pass_input()
+        self.should_be_reg_email_input()
+        self.should_be_submit_registration_button()
+
     # Наличие поля ввода email для регистрации
     def should_be_reg_email_input(self):
         assert self.is_element_present(*LoginPageLocators.REGISTRATION_EMAIL_INPUT), 'Reg email input is not presented'
@@ -82,3 +99,8 @@ class LoginPage(MainPage):
         language = language.lower()
         assert current_url == f'https://selenium1py.pythonanywhere.com/{language}/accounts/login/', f"Wrong login " \
                                                                                                     f"page url "
+
+    # Проверка появления окон с валидацией при неверном вводе пароля
+    def should_be_login_alerts(self):
+        self.is_element_present(*LoginPageLocators.FIRST_ALERT), '"Try again" alert is not presented'
+        self.is_element_present(*LoginPageLocators.SECOND_ALERT), '"Fields can be case sensitive" is not presented'
