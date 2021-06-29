@@ -1,7 +1,8 @@
+import time
+
 from .main_page import MainPage
 from .locators import LoginPageLocators
 import time
-
 
 class LoginPage(MainPage):
 

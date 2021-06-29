@@ -1,4 +1,3 @@
-import time
 from pages.main_page import MainPage
 from pages.catalogue_page import CatalogPage
 from pages.login_page import LoginPage

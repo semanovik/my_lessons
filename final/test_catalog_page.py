@@ -1,7 +1,6 @@
-import time
 import pytest
 from pages.catalogue_page import CatalogPage
-from pages.main_page import MainPage
+
 
 link_catalog_page = 'http://selenium1py.pythonanywhere.com/catalogue/'
 

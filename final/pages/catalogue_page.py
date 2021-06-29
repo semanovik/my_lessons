@@ -50,5 +50,3 @@ class CatalogPage(MainPage):
     def should_not_be_registration_form(self):
         self.is_not_element_present(*CatalogPageLocators.REGISTRATION_FORM), 'Registration form is presented on ' \
                                                                              'catalog page '
-
-
