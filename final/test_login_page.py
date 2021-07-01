@@ -1,5 +1,6 @@
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
+import pytest
 
 login_page_link = 'http://selenium1py.pythonanywhere.com/accounts/login/'
 
@@ -22,6 +23,7 @@ expected_welcome_text_reg = {
 
 class TestLoginPage:
 
+    @pytest.mark.personal_tests
     # Наличие необходимых элементов для логирования и регистрации
     def test_need_to_login(self, browser):
         # Arrange
@@ -34,6 +36,7 @@ class TestLoginPage:
         page.should_be_to_login_in()
         page.should_be_for_registration()
 
+    @pytest.mark.personal_tests
     # Вход в существующий аккаунт, проверка приветствия существующего пользователя
     def test_login_in_account(self, browser, language):
         # Arrange
@@ -49,6 +52,7 @@ class TestLoginPage:
         welcome_message = main_page.get_text_from_welcome_message()
         main_page.should_be_correct_message(expected_welcome_text_login[language], welcome_message)
 
+    @pytest.mark.personal_tests
     # Регистрация нового аккаунта, проверка приветсвия нового пользователя
     def test_reg_test_user(self, browser, language):
         page = LoginPage(browser, login_page_link)
@@ -60,6 +64,7 @@ class TestLoginPage:
         welcome_message = main_page.get_text_from_welcome_message()
         main_page.should_be_correct_message(expected_welcome_text_reg[language], welcome_message)
 
+    @pytest.mark.personal_tests
     # Негативная проверка, что нет поздравления с регистрацией для старого пользователя
     def test_should_not_be_welcome_new_user_message_after_login_in(self, browser, language):
         # Arrange
@@ -74,6 +79,7 @@ class TestLoginPage:
         # Assert
         main_page.should_not_be_incorrect_message(expected_welcome_text_reg[language], welcome_message)
 
+    @pytest.mark.personal_tests
     # Негативная проверка, что нет приветствия старого пользователя для нового
     def test_should_not_be_welcome_back_message_after_registration(self, browser, language):
         # Arrange
@@ -87,15 +93,3 @@ class TestLoginPage:
 
         # Assert
         main_page.should_not_be_incorrect_message(expected_welcome_text_login, welcome_message)
-
-    # Проверка появления алертов при указании неверных данных
-    def test_login_in_with_wrong_password(self, browser):
-        # Arrange
-        page = LoginPage(browser, login_page_link)
-
-        # Act
-        page.open()
-        page.incorrect_fill_inputs()
-
-        # Assert
-        page.should_be_login_alerts()

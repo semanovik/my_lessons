@@ -1,12 +1,14 @@
 from pages.main_page import MainPage
 from pages.catalogue_page import CatalogPage
 from pages.login_page import LoginPage
+import pytest
 
 main_page_link = 'https://selenium1py.pythonanywhere.com/'
 
 
 class TestMainPage:
 
+    @pytest.mark.personal_tests
     # Переход на страницу каталога с главной, проверка наличия всех важных эл-в страницы каталога
     def test_go_to_catalogue_from_main_page(self, browser, language):
         # Arrange
@@ -21,6 +23,7 @@ class TestMainPage:
         catalogue_page.should_be_always_on_catalog_page()
         catalogue_page.should_be_catalog_url(language)
 
+    @pytest.mark.personal_tests
     # Переход на страницу логирования с главной, проверка наличия всех важных эл-в страницы логирования
     def test_go_to_login_page_from_main_page(self, browser, language):
         page = MainPage(browser, main_page_link)
